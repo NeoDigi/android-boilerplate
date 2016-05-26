@@ -1,6 +1,6 @@
 package be.neodigi.androidboilerplate.injection.component;
 
-import be.neodigi.androidboilerplate.injection.PerActivity;
+import be.neodigi.androidboilerplate.injection.scope.PerActivity;
 import be.neodigi.androidboilerplate.injection.module.ActivityModule;
 import be.neodigi.androidboilerplate.ui.main.MainActivity;
 import dagger.Component;

@@ -12,6 +12,7 @@ import be.neodigi.androidboilerplate.data.remote.RestService;
 import be.neodigi.androidboilerplate.injection.ApplicationContext;
 import dagger.Module;
 import dagger.Provides;
+import io.realm.Realm;
 
 import static org.mockito.Mockito.mock;
 
@@ -43,6 +44,11 @@ public class ApplicationTestModule {
     @Singleton
     Bus provideEventBus() {
         return new Bus();
+    }
+
+    @Provides
+    Realm provideRealm() {
+        return Realm.getDefaultInstance();
     }
 
     /************* MOCKS *************/

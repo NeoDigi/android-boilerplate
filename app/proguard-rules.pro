@@ -16,24 +16,15 @@
 #   public *;
 #}
 
-# ButterKnife rules
--keep class butterknife.** { *; }
--dontwarn butterknife.internal.**
--keep class **$$ViewBinder { *; }
-
--keepclasseswithmembernames class * {
-    @butterknife.* <fields>;
-}
-
--keepclasseswithmembernames class * {
-    @butterknife.* <methods>;
-}
-
 # Retrofit rules
--dontwarn retrofit.**
--keep class retrofit.** { *; }
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
 -keepattributes Signature
 -keepattributes Exceptions
+
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
 
 # OkHttp rules
 -dontwarn okio.**
@@ -51,24 +42,27 @@
 -dontwarn sun.misc.Unsafe
 -keep class rx.internal.util.unsafe.** { *; }
 
-# EasyAdapter rules
--keepclassmembers class * extends uk.co.user.easyadapter.ItemViewHolder {
-    public <init>(...);
- }
-
 # Gson rules
 -keepattributes Signature
 -keep class sun.misc.Unsafe { *; }
 # TODO change to match your package model
 # Keep non static or private fields of models so Gson can find their names
--keepclassmembers class uk.co.user.androidboilerplate.data.model.** {
+-keepclassmembers class be.neodigi.androidboilerplate.data.model.** {
     !static !private <fields>;
 }
 # TODO change to match your Retrofit services (only if using inner models withing the service)
 # Some models used by gson are inner classes inside the retrofit service
--keepclassmembers class uk.co.user.androidboilerplate.data.remote.RibotsService$** {
+-keepclassmembers class be.neodigi.androidboilerplate.data.remote.RestService$** {
     !static !private <fields>;
 }
+
+# Realm rules
+-keep class io.realm.annotations.RealmModule
+-keep @io.realm.annotations.RealmModule class *
+-keep class io.realm.internal.Keep
+-keep @io.realm.internal.Keep class * { *; }
+-dontwarn javax.**
+-dontwarn io.realm.**
 
 # Produces useful obfuscated stack traces
 # http://proguard.sourceforge.net/manual/examples.html#stacktrace

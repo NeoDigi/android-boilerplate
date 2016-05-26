@@ -1,4 +1,4 @@
-package be.neodigi.androidboilerplate.injection;
+package be.neodigi.androidboilerplate.injection.scope;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
