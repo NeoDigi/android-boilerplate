@@ -1,6 +1,7 @@
 # Android Boilerplate
 
-Sample Android app that we use at [user](http://user.co.uk) as a reference for new Android projects. It demonstrates the architecture, tools and guidelines that we use when developing for the Android platform (https://github.com/user/android-guidelines)
+Sample Android app that demonstrates the architecture, tools and guidelines that we use when developing for the Android platform (https://github.com/user/android-guidelines)
+
 
 Libraries and tools included:
 
@@ -9,7 +10,7 @@ Libraries and tools included:
 - [RxJava](https://github.com/ReactiveX/RxJava) and [RxAndroid](https://github.com/ReactiveX/RxAndroid) 
 - [Retrofit 2](http://square.github.io/retrofit/)
 - [Dagger 2](http://google.github.io/dagger/)
-- [SqlBrite](https://github.com/square/sqlbrite)
+- [Realm](https://realm.io)
 - [Butterknife](https://github.com/JakeWharton/butterknife)
 - [Timber](https://github.com/JakeWharton/timber)
 - [Picasso](http://square.github.io/picasso/)
@@ -19,18 +20,12 @@ Libraries and tools included:
 - [Mockito](http://mockito.org/)
 - [Checkstyle](http://checkstyle.sourceforge.net/), [PMD](https://pmd.github.io/) and [Findbugs](http://findbugs.sourceforge.net/) for code analysis
 
-## Requirements
-
-- [Android SDK](http://developer.android.com/sdk/index.html).
-- Android [6.0 (API 23) ](http://developer.android.com/tools/revisions/platforms.html#6.0).
-- Latest Android SDK Tools and build tools.
-
 
 ## Architecture
 
 This project follows user's Android architecture guidelines that are based on [MVP (Model View Presenter)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter). Read more about them [here](https://github.com/user/android-guidelines/blob/master/architecture_guidelines/android_architecture.md).
 
-![](https://github.com/user/android-guidelines/raw/master/architecture_guidelines/architecture_diagram.png)
+![](https://github.com/ribot/android-guidelines/raw/master/architecture_guidelines/architecture_diagram.png)
 
 ### How to implement a new screen following MVP
 
@@ -144,8 +139,6 @@ To quickly start a new project from this boilerplate follow the next steps:
 ## License
 
 ```
-    Copyright 2015 Ribot Ltd.
-
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
