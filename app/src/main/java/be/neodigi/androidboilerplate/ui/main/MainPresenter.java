@@ -6,12 +6,15 @@ import javax.inject.Inject;
 
 import be.neodigi.androidboilerplate.data.DataManager;
 import be.neodigi.androidboilerplate.data.model.User;
+import be.neodigi.androidboilerplate.injection.ConfigPersistent;
 import be.neodigi.androidboilerplate.ui.base.BasePresenter;
+import be.neodigi.androidboilerplate.util.RxUtil;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
+@ConfigPersistent
 public class MainPresenter extends BasePresenter<MainMvpView> {
 
     private final DataManager mDataManager;
@@ -35,6 +38,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
 
     public void loadUsers() {
         checkViewAttached();
+        RxUtil.unsubscribe(mSubscription);
         mSubscription = mDataManager.getUsers()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<List<User>>() {

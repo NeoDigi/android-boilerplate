@@ -58,13 +58,14 @@ public class RxSchedulersOverrideRule implements TestRule {
             public void evaluate() throws Throwable {
                 RxAndroidPlugins.getInstance().reset();
                 RxAndroidPlugins.getInstance().registerSchedulersHook(mRxAndroidSchedulersHook);
-                callResetViaReflectionIn(RxJavaPlugins.getInstance());
+
+                RxJavaPlugins.getInstance().reset();
                 RxJavaPlugins.getInstance().registerSchedulersHook(mRxJavaSchedulersHook);
 
                 base.evaluate();
 
                 RxAndroidPlugins.getInstance().reset();
-                callResetViaReflectionIn(RxJavaPlugins.getInstance());
+                RxJavaPlugins.getInstance().reset();
             }
         };
     }

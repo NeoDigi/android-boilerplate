@@ -25,7 +25,7 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
  */
 
 @RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = DefaultConfig.EMULATE_SDK)
+@Config(constants = BuildConfig.class, sdk = 19)
 @PowerMockIgnore({"org.mockito.*"})
 @PrepareForTest({Realm.class})
 public class DatabaseHelperTest {

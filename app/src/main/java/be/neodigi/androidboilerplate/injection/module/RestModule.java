@@ -50,7 +50,5 @@ public class RestModule {
                         .createWithScheduler(Schedulers.io()))
                 .callFactory(httpClientBuilder.build())
                 .build().create(RestService.class);
-
     }
-
 }

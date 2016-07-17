@@ -16,7 +16,7 @@ import java.util.List;
 
 import be.neodigi.androidboilerplate.data.model.User;
 import be.neodigi.androidboilerplate.test.common.TestDataFactory;
-import be.neodigi.androidboilerplate.test.common.rules.TestComponentRule;
+import be.neodigi.androidboilerplate.test.common.TestComponentRule;
 import be.neodigi.androidboilerplate.ui.main.MainActivity;
 import rx.Observable;
 

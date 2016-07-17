@@ -14,7 +14,6 @@ import javax.inject.Inject;
 
 import be.neodigi.androidboilerplate.R;
 import be.neodigi.androidboilerplate.data.SyncService;
-import be.neodigi.androidboilerplate.data.local.DatabaseHelper;
 import be.neodigi.androidboilerplate.data.model.User;
 import be.neodigi.androidboilerplate.ui.base.BaseActivity;
 import be.neodigi.androidboilerplate.util.DialogFactory;
@@ -28,7 +27,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Inject MainPresenter mMainPresenter;
     @Inject UsersAdapter mUsersAdapter;
-    @Inject DatabaseHelper mDataBaseHelper;
 
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
 
@@ -46,7 +44,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivityComponent().inject(this);
+        activityComponent().inject(this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 

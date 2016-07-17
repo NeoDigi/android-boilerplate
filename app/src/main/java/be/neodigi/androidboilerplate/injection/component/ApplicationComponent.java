@@ -3,8 +3,6 @@ package be.neodigi.androidboilerplate.injection.component;
 import android.app.Application;
 import android.content.Context;
 
-import com.squareup.otto.Bus;
-
 import javax.inject.Singleton;
 
 import be.neodigi.androidboilerplate.data.DataManager;
@@ -15,6 +13,7 @@ import be.neodigi.androidboilerplate.data.remote.RestService;
 import be.neodigi.androidboilerplate.injection.ApplicationContext;
 import be.neodigi.androidboilerplate.injection.module.ApplicationModule;
 import be.neodigi.androidboilerplate.injection.module.RestModule;
+import be.neodigi.androidboilerplate.util.RxEventBus;
 import dagger.Component;
 import io.realm.Realm;
 
@@ -31,5 +30,5 @@ public interface ApplicationComponent {
     DatabaseHelper databaseHelper();
     Realm realm();
     DataManager dataManager();
-    Bus eventBus();
+    RxEventBus eventBus();
 }

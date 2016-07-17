@@ -1,4 +1,4 @@
-package be.neodigi.androidboilerplate.test.common.rules;
+package be.neodigi.androidboilerplate.test.common;
 
 import android.content.Context;
 

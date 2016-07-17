@@ -3,8 +3,6 @@ package be.neodigi.androidboilerplate.injection.module;
 import android.app.Application;
 import android.content.Context;
 
-import com.squareup.otto.Bus;
-
 import javax.inject.Singleton;
 
 import be.neodigi.androidboilerplate.injection.ApplicationContext;
@@ -33,12 +31,6 @@ public class ApplicationModule {
     @ApplicationContext
     Context provideContext() {
         return mApplication;
-    }
-
-    @Provides
-    @Singleton
-    Bus provideEventBus() {
-        return new Bus();
     }
 
     @Provides

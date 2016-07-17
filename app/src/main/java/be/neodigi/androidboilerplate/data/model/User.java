@@ -7,7 +7,7 @@ import io.realm.UserRealmProxy;
 import io.realm.annotations.PrimaryKey;
 
 @Parcel(implementations = { UserRealmProxy.class },
-        value = Parcel.Serialization.FIELD,
+        value = Parcel.Serialization.BEAN,
         analyze = { User.class })
 public class User extends RealmObject {
 

@@ -3,8 +3,6 @@ package be.neodigi.androidboilerplate.test.common.injection.module;
 import android.app.Application;
 import android.content.Context;
 
-import com.squareup.otto.Bus;
-
 import javax.inject.Singleton;
 
 import be.neodigi.androidboilerplate.data.DataManager;
@@ -38,12 +36,6 @@ public class ApplicationTestModule {
     @ApplicationContext
     Context provideContext() {
         return mApplication;
-    }
-
-    @Provides
-    @Singleton
-    Bus provideEventBus() {
-        return new Bus();
     }
 
     @Provides

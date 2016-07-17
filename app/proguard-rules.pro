@@ -56,6 +56,12 @@
     !static !private <fields>;
 }
 
+# Parcel library
+-keep interface org.parceler.Parcel
+-keep @org.parceler.Parcel class * { *; }
+-keep class **$$Parcelable { *; }
+
+
 # Realm rules
 -keep class io.realm.annotations.RealmModule
 -keep @io.realm.annotations.RealmModule class *

@@ -9,9 +9,7 @@ import be.neodigi.androidboilerplate.data.local.DatabaseHelper;
 import be.neodigi.androidboilerplate.data.local.PreferencesHelper;
 import be.neodigi.androidboilerplate.data.model.User;
 import be.neodigi.androidboilerplate.data.remote.RestService;
-import be.neodigi.androidboilerplate.util.EventPosterHelper;
 import rx.Observable;
-import rx.functions.Action0;
 import rx.functions.Func1;
 
 @Singleton
@@ -20,15 +18,13 @@ public class DataManager {
     private final RestService mRestService;
     private final DatabaseHelper mDatabaseHelper;
     private final PreferencesHelper mPreferencesHelper;
-    private final EventPosterHelper mEventPoster;
 
     @Inject
     public DataManager(RestService restService, PreferencesHelper preferencesHelper,
-                       DatabaseHelper databaseHelper, EventPosterHelper eventPosterHelper) {
+                       DatabaseHelper databaseHelper) {
         mRestService = restService;
         mPreferencesHelper = preferencesHelper;
         mDatabaseHelper = databaseHelper;
-        mEventPoster = eventPosterHelper;
     }
 
     public PreferencesHelper getPreferencesHelper() {
@@ -47,16 +43,6 @@ public class DataManager {
 
     public Observable<List<User>> getUsers() {
         return mDatabaseHelper.getUsers().distinct();
-    }
-
-    /// Helper method to post events from doOnCompleted.
-    private Action0 postEventAction(final Object event) {
-        return new Action0() {
-            @Override
-            public void call() {
-                mEventPoster.postEventSafely(event);
-            }
-        };
     }
 
 }

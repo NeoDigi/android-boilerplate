@@ -15,7 +15,6 @@ import be.neodigi.androidboilerplate.data.local.PreferencesHelper;
 import be.neodigi.androidboilerplate.data.model.User;
 import be.neodigi.androidboilerplate.data.remote.RestService;
 import be.neodigi.androidboilerplate.test.common.TestDataFactory;
-import be.neodigi.androidboilerplate.util.EventPosterHelper;
 import rx.Observable;
 import rx.observers.TestSubscriber;
 
@@ -38,13 +37,12 @@ public class DataManagerTest {
     @Mock DatabaseHelper mMockDatabaseHelper;
     @Mock PreferencesHelper mMockPreferencesHelper;
     @Mock RestService mMockRestService;
-    @Mock EventPosterHelper mEventPosterHelper;
     private DataManager mDataManager;
 
     @Before
     public void setUp() {
         mDataManager = new DataManager(mMockRestService, mMockPreferencesHelper,
-                mMockDatabaseHelper, mEventPosterHelper);
+                mMockDatabaseHelper);
     }
 
     @Test
