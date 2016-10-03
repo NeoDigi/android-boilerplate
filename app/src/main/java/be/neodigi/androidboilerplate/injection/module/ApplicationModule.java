@@ -16,7 +16,7 @@ import io.realm.RealmConfiguration;
  */
 @Module
 public class ApplicationModule {
-    protected final Application mApplication;
+    private final Application mApplication;
 
     public ApplicationModule(Application application) {
         mApplication = application;
@@ -36,7 +36,8 @@ public class ApplicationModule {
     @Provides
     @Singleton
     RealmConfiguration provideRealmConfiguration(@ApplicationContext Context context) {
-        RealmConfiguration.Builder builder = new RealmConfiguration.Builder(context);
+        Realm.init(context);
+        RealmConfiguration.Builder builder = new RealmConfiguration.Builder();
         builder.name("boilerplate.realm");
         return builder.build();
     }

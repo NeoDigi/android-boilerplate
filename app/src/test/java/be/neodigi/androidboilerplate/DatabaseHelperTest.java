@@ -12,7 +12,6 @@ import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
 import be.neodigi.androidboilerplate.data.model.User;
-import be.neodigi.androidboilerplate.util.DefaultConfig;
 import io.realm.Realm;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -32,7 +31,7 @@ public class DatabaseHelperTest {
 
     @Rule
     public PowerMockRule rule = new PowerMockRule();
-    Realm mockRealm;
+    private Realm mMockRealm;
 
     @Before
     public void setupRealm() {
@@ -42,29 +41,29 @@ public class DatabaseHelperTest {
 
         when(Realm.getDefaultInstance()).thenReturn(mockRealm);
 
-        this.mockRealm = mockRealm;
+        mMockRealm = mockRealm;
     }
 
     @Test
     public void shouldBeAbleToGetDefaultInstance() {
-        assertThat(Realm.getDefaultInstance(), is(mockRealm));
+        assertThat(Realm.getDefaultInstance(), is(mMockRealm));
     }
 
     @Test
     public void shouldBeAbleToMockRealmMethods() {
-        when(mockRealm.isAutoRefresh()).thenReturn(true);
-        assertThat(mockRealm.isAutoRefresh(), is(true));
+        when(mMockRealm.isAutoRefresh()).thenReturn(true);
+        assertThat(mMockRealm.isAutoRefresh(), is(true));
 
-        when(mockRealm.isAutoRefresh()).thenReturn(false);
-        assertThat(mockRealm.isAutoRefresh(), is(false));
+        when(mMockRealm.isAutoRefresh()).thenReturn(false);
+        assertThat(mMockRealm.isAutoRefresh(), is(false));
     }
 
     @Test
     public void shouldBeAbleToCreateRealmObject() {
         User user = new User();
-        when(mockRealm.createObject(User.class)).thenReturn(user);
+        when(mMockRealm.createObject(User.class)).thenReturn(user);
 
-        User output = mockRealm.createObject(User.class);
+        User output = mMockRealm.createObject(User.class);
 
         assertThat(output, is(user));
     }

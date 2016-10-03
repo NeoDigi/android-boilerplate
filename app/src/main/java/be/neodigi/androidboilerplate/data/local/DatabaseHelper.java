@@ -21,7 +21,7 @@ public class DatabaseHelper {
     private final Provider<Realm> mRealmProvider;
 
     @Inject
-    public DatabaseHelper(Provider<Realm> realmProvider) {
+    DatabaseHelper(Provider<Realm> realmProvider) {
         mRealmProvider = realmProvider;
     }
 
@@ -34,9 +34,12 @@ public class DatabaseHelper {
 
                 try {
                     realm = mRealmProvider.get();
-                    realm.beginTransaction();
-                    realm.copyToRealmOrUpdate(newUsers);
-                    realm.commitTransaction();
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            realm.copyToRealmOrUpdate(newUsers);
+                        }
+                    });
                 } catch (Exception e) {
                     Timber.e(e, "There was an error while adding in Realm.");
                     subscriber.onError(e);
@@ -65,4 +68,17 @@ public class DatabaseHelper {
                     }
                 });
     }
+
+    /*public Observable<List<User>> getUsers() {
+        final Realm realm = mRealmProvider.get();
+        RealmResults<User> realmUsers = realm.where(User.class).findAll();
+
+        realm.beginTransaction();
+        List<User> users = realm.copyFromRealm(realmUsers);
+        realm.commitTransaction();
+
+        realm.close();
+
+        return Observable.just(users);
+    }*/
 }
